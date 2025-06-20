@@ -111,6 +111,7 @@
       background: #e8f5e9;
       padding: 15px;
       border-radius: 8px;
+      display: none;
     }
 
     .result ul {
@@ -166,19 +167,6 @@
       margin-bottom: 20px;
     }
 
-    .checkbox-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .checkbox-group label {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-weight: normal;
-    }
-
     .error {
       border-color: red !important;
     }
@@ -187,6 +175,32 @@
       color: red;
       font-size: 0.9rem;
       margin-top: 5px;
+    }
+
+    .pricing-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #d1d9e6;
+    }
+
+    .pricing-section h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+
+    .pricing-section ul {
+      list-style: none;
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .pricing-section ul li {
+      margin: 10px 0;
+      font-size: 1.1rem;
     }
 
     @media (max-width: 768px) {
@@ -246,32 +260,6 @@
       </div>
     </div>
 
-    <label for="dirt">Niveau de saleté :</label>
-    <select id="dirt">
-      <option value="normal">Normal</option>
-      <option value="deep">En profondeur</option>
-      <option value="greasy">Très sale</option>
-    </select>
-
-    <div class="form-group">
-      <div>
-        <label for="products">Produits de nettoyage :</label>
-        <select id="products">
-          <option value="client">Par le client</option>
-          <option value="entreprise">Par l'entreprise</option>
-          <option value="moi">Par moi-même</option>
-        </select>
-      </div>
-      <div>
-        <label for="tools">Outils de nettoyage :</label>
-        <select id="tools">
-          <option value="client">Par le client</option>
-          <option value="entreprise">Par l'entreprise</option>
-          <option value="moi">Par moi-même</option>
-        </select>
-      </div>
-    </div>
-
     <div id="spaces-list"></div>
     <button type="button" class="btn" onclick="addSpaceField()">
       <span>➕</span> Ajouter un espace
@@ -289,28 +277,40 @@
         </select>
       </div>
       <div>
-        <label>Jours préférés :</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="preferred-day" value="Lundi"> Lundi</label>
-          <label><input type="checkbox" name="preferred-day" value="Mardi"> Mardi</label>
-          <label><input type="checkbox" name="preferred-day" value="Mercredi"> Mercredi</label>
-          <label><input type="checkbox" name="preferred-day" value="Jeudi"> Jeudi</label>
-          <label><input type="checkbox" name="preferred-day" value="Vendredi"> Vendredi</label>
-          <label><input type="checkbox" name="preferred-day" value="Samedi"> Samedi</label>
-          <label><input type="checkbox" name="preferred-day" value="Dimanche"> Dimanche</label>
-        </div>
+        <label for="preferred-day">Jour préféré :</label>
+        <select id="preferred-day" required>
+          <option value="">Sélectionner un jour</option>
+          <option value="Lundi">Lundi</option>
+          <option value="Mardi">Mardi</option>
+          <option value="Mercredi">Mercredi</option>
+          <option value="Jeudi">Jeudi</option>
+          <option value="Vendredi">Vendredi</option>
+          <option value="Samedi">Samedi</option>
+          <option value="Dimanche">Dimanche</option>
+          <option value="Matins uniquement">Matins uniquement</option>
+          <option value="Après-midi uniquement">Après-midi uniquement</option>
+          <option value="Soirs uniquement">Soirs uniquement</option>
+          <option value="Week-end uniquement">Week-end uniquement</option>
+        </select>
         <div class="error-message" id="days-error"></div>
       </div>
       <div>
-        <label>Heures préférées :</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="preferred-time" value="08:00"> 08:00</label>
-          <label><input type="checkbox" name="preferred-time" value="10:00"> 10:00</label>
-          <label><input type="checkbox" name="preferred-time" value="12:00"> 12:00</label>
-          <label><input type="checkbox" name="preferred-time" value="14:00"> 14:00</label>
-          <label><input type="checkbox" name="preferred-time" value="16:00"> 16:00</label>
-          <label><input type="checkbox" name="preferred-time" value="18:00"> 18:00</label>
-        </div>
+        <label for="preferred-time">Heure préférée :</label>
+        <select id="preferred-time" required>
+          <option value="">Sélectionner une heure</option>
+          <option value="08:00-09:00">08:00 - 09:00</option>
+          <option value="09:00-10:00">09:00 - 10:00</option>
+          <option value="10:00-11:00">10:00 - 11:00</option>
+          <option value="11:00-12:00">11:00 - 12:00</option>
+          <option value="12:00-13:00">12:00 - 13:00</option>
+          <option value="13:00-14:00">13:00 - 14:00</option>
+          <option value="14:00-15:00">14:00 - 15:00</option>
+          <option value="15:00-16:00">15:00 - 16:00</option>
+          <option value="16:00-17:00">16:00 - 17:00</option>
+          <option value="17:00-18:00">17:00 - 18:00</option>
+          <option value="18:00-19:00">18:00 - 19:00</option>
+          <option value="Flexible">Heures flexibles</option>
+        </select>
         <div class="error-message" id="times-error"></div>
       </div>
     </div>
@@ -318,25 +318,30 @@
     <label for="notes">Remarques ou précisions :</label>
     <textarea id="notes" maxlength="3500" placeholder="Besoins spécifiques, contraintes, etc."></textarea>
 
-    <button class="btn" onclick="calculatePrice()">
-      <span>💰</span> Calculer le prix
-    </button>
     <button class="btn" onclick="sendEmail()">
       <span>📩</span> Envoyer par Email
     </button>
 
-    <div class="result" id="result">
+    <div class="result" id="result" style="display: none;">
       <h3>Récapitulatif du coût :</h3>
       <ul id="cost-breakdown"></ul>
       <p><strong>Total estimé : <span id="total-cost"></span> €</strong></p>
     </div>
   </div>
 
+  <div class="pricing-section">
+    <h2>📋 Tarifs des Services</h2>
+    <ul>
+      <li>Services de nettoyage (par heure) : 17.7 €</li>
+      <li>Nettoyage des vitres (par m²) : 1.5 €</li>
+    </ul>
+  </div>
+
   <script>
     const spaceTypes = [
       "Chambre", "Salon", "Salle de bain", "Cuisine", "Balcon",
       "Bureau", "Salle de réunion", "WC", "Réception",
-      "Hall", "Garage", "Terrasse", "Escalier", "Couloir",
+      "Hall", "Garage", "Terrasse", "Vitre", "Escalier", "Couloir",
       "Salle d’attente", "Vestiaire", "Salle informatique", "Autre"
     ];
 
@@ -346,71 +351,41 @@
       div.innerHTML = `
         <button class="delete-btn" onclick="this.parentElement.remove()">✕</button>
         <label>Type de l'espace :</label>
-        <select class="space-type">
+        <select class="space-type" onchange="toggleFields(this)">
           ${spaceTypes.map(type => `<option value="${type}">${type}</option>`).join('')}
         </select>
-        <label>Surface d'un espace (m²) :</label>
+        <label class="area-label">Surface d'un espace (m²) :</label>
         <input type="number" class="space-area" placeholder="Ex: 25" min="0" />
+        <label class="hours-label" style="display: none;">Durée estimée (heures) :</label>
+        <input type="number" class="space-hours" placeholder="Ex: 2" min="0" step="0.5" style="display: none;" />
         <label>Nombre d'espaces :</label>
         <input type="number" class="space-count" placeholder="Ex: 2" min="1" value="1" />
         <div class="error-message" id="space-error-${Date.now()}"></div>
       `;
       document.getElementById("spaces-list").appendChild(div);
+      toggleFields(div.querySelector(".space-type")); // Initialize field visibility
     }
 
-    function calculatePrice() {
-      const dirt = document.getElementById("dirt").value;
-      const products = document.getElementById("products").value;
-      const tools = document.getElementById("tools").value;
-      const rate = { normal: 2.5, deep: 3.5, greasy: 4.5 }[dirt];
-      let total = 0;
-      let breakdown = "";
-      let valid = true;
+    function toggleFields(select) {
+      const block = select.closest(".space-block");
+      const areaLabel = block.querySelector(".area-label");
+      const areaInput = block.querySelector(".space-area");
+      const hoursLabel = block.querySelector(".hours-label");
+      const hoursInput = block.querySelector(".space-hours");
 
-      document.querySelectorAll(".space-block").forEach(block => {
-        const type = block.querySelector(".space-type").value;
-        const area = parseFloat(block.querySelector(".space-area").value);
-        const count = parseInt(block.querySelector(".space-count").value);
-        const errorDiv = block.querySelector(".error-message");
-        if (isNaN(area) || isNaN(count)) {
-          block.querySelector(".space-area").classList.add("error");
-          block.querySelector(".space-count").classList.add("error");
-          errorDiv.textContent = "Veuillez remplir tous les champs correctement.";
-          valid = false;
-        } else {
-          const cost = area * count * rate;
-          total += cost;
-          breakdown += `<li>${type} (${count} x ${area}m²) : ${cost.toFixed(2)}€</li>`;
-          block.querySelector(".space-area").classList.remove("error");
-          block.querySelector(".space-count").classList.remove("error");
-          errorDiv.textContent = "";
-        }
-      });
-
-      if (!valid) {
-        document.getElementById("cost-breakdown").innerHTML = "";
-        document.getElementById("total-cost").textContent = "Veuillez remplir tous les champs correctement.";
-        return;
+      if (select.value === "Vitre") {
+        areaLabel.style.display = "block";
+        areaInput.style.display = "block";
+        hoursLabel.style.display = "none";
+        hoursInput.style.display = "none";
+        hoursInput.value = ""; // Clear hours when switching to Vitre
+      } else {
+        areaLabel.style.display = "none";
+        areaInput.style.display = "none";
+        hoursLabel.style.display = "block";
+        hoursInput.style.display = "block";
+        areaInput.value = ""; // Clear area when switching to non-Vitre
       }
-
-      if (products === "entreprise") {
-        total += 5;
-        breakdown += `<li>Produits (par l'entreprise) : 5.00€</li>`;
-      } else if (products === "moi") {
-        total += 10;
-        breakdown += `<li>Produits (par moi-même) : 10.00€</li>`;
-      }
-
-      if (tools === "entreprise") {
-        total += 5;
-        breakdown += `<li>Outils (par l'entreprise) : 5.00€</li>`;
-      } else if (tools === "moi") {
-        total += 10;
-        breakdown += `<li>Outils (par moi-même) : 10.00€</li>`;
-      }
-
-      document.getElementById("cost-breakdown").innerHTML = breakdown;
-      document.getElementById("total-cost").textContent = total.toFixed(2);
     }
 
     function sendEmail() {
@@ -418,18 +393,10 @@
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
       const address = document.getElementById("address").value;
-      const dirt = document.getElementById("dirt").value;
-      const products = document.getElementById("products").value;
-      const tools = document.getElementById("tools").value;
       const contract = document.getElementById("contract-type").value;
-      const preferredDays = Array.from(document.querySelectorAll('input[name="preferred-day"]:checked'))
-        .map(input => input.value)
-        .join(", ") || "Aucun jour sélectionné";
-      const preferredTimes = Array.from(document.querySelectorAll('input[name="preferred-time"]:checked'))
-        .map(input => input.value)
-        .join(", ") || "Aucune heure sélectionnée";
+      const preferredDay = document.getElementById("preferred-day").value;
+      const preferredTime = document.getElementById("preferred-time").value;
       const notes = document.getElementById("notes").value;
-      const result = document.getElementById("total-cost").textContent + "€";
 
       let valid = true;
       if (!name || !email || !phone || !address) {
@@ -445,15 +412,15 @@
         document.getElementById("address").classList.remove("error");
       }
 
-      if (!preferredDays) {
-        document.getElementById("days-error").textContent = "Veuillez sélectionner au moins un jour.";
+      if (!preferredDay) {
+        document.getElementById("days-error").textContent = "Veuillez sélectionner un jour.";
         valid = false;
       } else {
         document.getElementById("days-error").textContent = "";
       }
 
-      if (!preferredTimes) {
-        document.getElementById("times-error").textContent = "Veuillez sélectionner au moins une heure.";
+      if (!preferredTime) {
+        document.getElementById("times-error").textContent = "Veuillez sélectionner une heure.";
         valid = false;
       } else {
         document.getElementById("times-error").textContent = "";
@@ -464,13 +431,25 @@
         const type = block.querySelector(".space-type").value;
         const area = block.querySelector(".space-area").value;
         const count = block.querySelector(".space-count").value;
-        if (area && count) {
-          services += `- ${type} : ${count} espace(s) de ${area} m²\n`;
+        const hours = block.querySelector(".space-hours").value;
+        if (type === "Vitre") {
+          if (area && count) {
+            services += `- ${type} : ${count} espace(s) de ${area} m²\n`;
+          } else {
+            valid = false;
+            block.querySelector(".space-area").classList.add("error");
+            block.querySelector(".space-count").classList.add("error");
+            block.querySelector(".error-message").textContent = "Veuillez remplir tous les champs correctement.";
+          }
         } else {
-          valid = false;
-          block.querySelector(".space-area").classList.add("error");
-          block.querySelector(".space-count").classList.add("error");
-          block.querySelector(".error-message").textContent = "Veuillez remplir tous les champs correctement.";
+          if (hours && count) {
+            services += `- ${type} : ${count} espace(s) pour ${hours} heure(s)\n`;
+          } else {
+            valid = false;
+            block.querySelector(".space-hours").classList.add("error");
+            block.querySelector(".space-count").classList.add("error");
+            block.querySelector(".error-message").textContent = "Veuillez remplir tous les champs correctement.";
+          }
         }
       });
 
@@ -479,7 +458,6 @@
         return;
       }
 
-      // تنسيق البريد الإلكتروني بصيغة نصية احترافية
       const emailBody = `
 **Objet : Demande de nettoyage - Référence ${name}**
 
@@ -495,15 +473,10 @@ Nous vous remercions de votre attention. Veuillez trouver ci-dessous les détail
 ### Services demandés :
 ${services.split('\n').filter(line => line.trim()).map(line => line).join('\n')}
 
-- **Niveau de saleté :** ${dirt.charAt(0).toUpperCase() + dirt.slice(1)}  
-- **Produits de nettoyage :** ${products === "moi" ? "Fourni par moi-même" : products === "entreprise" ? "Fourni par l'entreprise" : "Fourni par le client"}  
-- **Outils de nettoyage :** ${tools === "moi" ? "Fourni par moi-même" : tools === "entreprise" ? "Fourni par l'entreprise" : "Fourni par le client"}  
 - **Type de contrat :** ${contract.charAt(0).toUpperCase() + contract.slice(1)}  
-- **Jours préférés :** ${preferredDays}  
-- **Heures préférées :** ${preferredTimes}  
+- **Jour préféré :** ${preferredDay}  
+- **Heure préférée :** ${preferredTime}  
 - **Remarques :** ${notes || "(Aucun commentaire supplémentaire)"}  
-
-**Total estimé : ${result}**
 
 Nous restons à votre disposition pour toute information complémentaire ou pour planifier une intervention. Merci de nous contacter à l'adresse email ou au numéro de téléphone mentionnés ci-dessus.
 
@@ -525,9 +498,4 @@ ${name}
   <p>💡 Le prix affiché est une <strong>estimation indicative</strong> susceptible d’évoluer selon l’évaluation réelle du lieu.</p>
   <p>✅ Vos données ne sont utilisées que pour vous contacter concernant votre demande de nettoyage.</p>
 </footer>
-
-
-
 </html>
-
-
