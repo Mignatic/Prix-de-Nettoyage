@@ -141,6 +141,52 @@
       font-size: 0.9rem;
       margin-top: 5px;
     }
+    .pricing-section {
+      margin-top: 40px;
+      padding: 20px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      border: 1px solid #d1d9e6;
+    }
+    .pricing-section h2 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+    }
+    .pricing-section ul {
+      list-style: none;
+      text-align: left;
+      padding-left: 20px;
+    }
+    .pricing-section ul li {
+      margin: 10px 0;
+      font-size: 1.1rem;
+    }
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+        margin: 20px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 12px;
+      }
+      .result {
+        font-size: 1.5rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .form-group {
+        grid-template-columns: 1fr;
+      }
+      .space-block {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -163,25 +209,25 @@
         <label for="phone">Téléphone :</label>
         <input type="tel" id="phone" placeholder="Numéro de téléphone" required>
       </div>
-      <div class="form-group">
-        <div>
-          <label for="street">Nom de la rue :</label>
-          <input type="text" id="street" placeholder="Ex: Rue des Fleurs" required>
-        </div>
-        <div>
-          <label for="street-number">Numéro de la rue :</label>
-          <input type="number" id="street-number" placeholder="Ex: 45" required>
-        </div>
+      <div>
+        <label for="street">Nom de la rue :</label>
+        <input type="text" id="street" placeholder="Ex: Rue des Fleurs" required>
       </div>
-      <div class="form-group">
-        <div>
-          <label for="city">Ville :</label>
-          <input type="text" id="city" placeholder="Ex: Paris" required>
-        </div>
-        <div>
-          <label for="postal-code">Code postal :</label>
-          <input type="text" id="postal-code" placeholder="Ex: 75001" required>
-        </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="street-number">Numéro de la rue :</label>
+        <input type="number" id="street-number" placeholder="Ex: 45" required>
+      </div>
+      <div>
+        <label for="city">Ville :</label>
+        <input type="text" id="city" placeholder="Ex: Paris" required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <label for="postal-code">Code postal :</label>
+        <input type="text" id="postal-code" placeholder="Ex: 75001" required>
       </div>
     </div>
 
@@ -214,6 +260,10 @@
           <option value="Vendredi">Vendredi</option>
           <option value="Samedi">Samedi</option>
           <option value="Dimanche">Dimanche</option>
+          <option value="Matins uniquement">Matins uniquement</option>
+          <option value="Après-midi uniquement">Après-midi uniquement</option>
+          <option value="Soirs uniquement">Soirs uniquement</option>
+          <option value="Week-end uniquement">Week-end uniquement</option>
         </select>
         <div class="error-message" id="days-error"></div>
       </div>
@@ -221,12 +271,14 @@
         <label for="preferred-time">Heure préférée :</label>
         <select id="preferred-time" required>
           <option value="">Sélectionner une heure</option>
-          <option value="08:00-09:00">08:00 - 10:00</option>
-          <option value="09:00-10:00">10:00 - 12:00</option>
-          <option value="10:00-11:00">12:00 - 14:00</option>
-          <option value="11:00-12:00">14:00 - 16:00</option>
-          <option value="11:00-12:00">16:00 - 18:00</option>
-          <option value="11:00-12:00">18:00 - 20:00</option>
+          <option value="08:00-09:00">08:00 - 09:00</option>
+          <option value="09:00-10:00">09:00 - 10:00</option>
+          <option value="10:00-11:00">10:00 - 11:00</option>
+          <option value="11:00-12:00">11:00 - 12:00</option>
+          <option value="12:00-13:00">12:00 - 13:00</option>
+          <option value="13:00-14:00">13:00 - 14:00</option>
+          <option value="14:00-15:00">14:00 - 15:00</option>
+          <option value="15:00-16:00">15:00 - 16:00</option>
           <option value="Flexible">Heures flexibles</option>
         </select>
         <div class="error-message" id="times-error"></div>
@@ -266,6 +318,7 @@
       "Parties communes - Ascenseur",
       "Parties communes - Terrasse / Jardin",
       "Parties communes - Hall d'entrée",
+
       // --- Nettoyage chez particuliers ---
       "--- Nettoyage chez particuliers ---",
       "Chambre à coucher",
@@ -275,6 +328,7 @@
       "Balcon / Terrasse privé",
       "Placard / Vestiaire personnel",
       "Couloir intérieur",
+
       // --- Bureaux, Commerces & Magasins ---
       "--- Bureaux, Commerces & Magasins ---",
       "Bureau individuel",
@@ -284,6 +338,7 @@
       "Entrepôt / Stockage",
       "Toilettes professionnelles",
       "Vitrine extérieure",
+
       // --- Mobilier, Sols, Sanitaires ---
       "--- Mobilier, Sols, Sanitaires ---",
       "Nettoyage mobilier",
@@ -293,6 +348,7 @@
       "Nettoyage plafonds / murs",
       "Aspiration tapis / moquette",
       "Désinfection surfaces",
+
       // --- Vitres intérieures et extérieures ---
       "--- Vitres intérieures et extérieures ---",
       "Vitres intérieures",
@@ -301,6 +357,7 @@
       "Miroirs",
       "Portes vitrées",
       "Nettoyage vitres hautes",
+
       // --- Hôtels & Restaurants ---
       "--- Hôtels & Restaurants ---",
       "Chambres d'hôtel",
@@ -311,6 +368,7 @@
       "Espaces communs hôtel",
       "Bar / Lounge",
       "Terrasse restaurant",
+
       // --- Médecine / Pharmacie ---
       "--- Médecine / Pharmacie ---",
       "Chambres patientes",
@@ -319,6 +377,7 @@
       "Pharmacie",
       "Zones sanitaires hôpital",
       "Sanitaires clinique",
+
       // --- Autres ---
       "--- Autres ---",
       "Autres services sur demande"
@@ -348,8 +407,11 @@
       const streetNumber = document.getElementById("street-number").value;
       const city = document.getElementById("city").value;
       const postalCode = document.getElementById("postal-code").value;
+      const contract = document.getElementById("contract-type").value;
+      const preferredDay = document.getElementById("preferred-day").value;
+      const preferredTime = document.getElementById("preferred-time").value;
+      const notes = document.getElementById("notes").value;
 
-      // تجميع العنوان الكامل
       const fullAddress = `${street}, ${streetNumber}, ${city}, ${postalCode}`;
 
       let valid = true;
@@ -373,14 +435,14 @@
         document.getElementById("postal-code").classList.remove("error");
       }
 
-      if (!document.getElementById("preferred-day").value) {
+      if (!preferredDay) {
         document.getElementById("days-error").textContent = "Veuillez sélectionner un jour.";
         valid = false;
       } else {
         document.getElementById("days-error").textContent = "";
       }
 
-      if (!document.getElementById("preferred-time").value) {
+      if (!preferredTime) {
         document.getElementById("times-error").textContent = "Veuillez sélectionner une heure.";
         valid = false;
       } else {
@@ -414,12 +476,15 @@ Voici les détails de la demande de nettoyage :
 - **Email :** ${email}
 - **Téléphone :** ${phone}
 - **Adresse :** ${fullAddress}
+
 ### Services demandés :
 ${services.split('\n').filter(line => line.trim()).map(line => line).join('\n')}
-- **Type de contrat :** ${document.getElementById("contract-type").value.charAt(0).toUpperCase() + document.getElementById("contract-type").value.slice(1)}
-- **Jour préféré :** ${document.getElementById("preferred-day").value}
-- **Heure préférée :** ${document.getElementById("preferred-time").value}
-- **Remarques :** ${document.getElementById("notes").value || "(Aucun commentaire)"}
+
+- **Type de contrat :** ${contract.charAt(0).toUpperCase() + contract.slice(1)}
+- **Jour préféré :** ${preferredDay}
+- **Heure préférée :** ${preferredTime}
+- **Remarques :** ${notes || "(Aucun commentaire)"}
+
 Cordialement,  
 ${name}
       `;
