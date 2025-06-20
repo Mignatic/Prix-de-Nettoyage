@@ -163,9 +163,25 @@
         <label for="phone">Téléphone :</label>
         <input type="tel" id="phone" placeholder="Numéro de téléphone" required>
       </div>
-      <div>
-        <label for="address">Adresse complète :</label>
-        <input type="text" id="address" placeholder="Adresse, Ville, Code Postal" required>
+      <div class="form-group">
+        <div>
+          <label for="street">Nom de la rue :</label>
+          <input type="text" id="street" placeholder="Ex: Rue des Fleurs" required>
+        </div>
+        <div>
+          <label for="street-number">Numéro de la rue :</label>
+          <input type="number" id="street-number" placeholder="Ex: 45" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <div>
+          <label for="city">Ville :</label>
+          <input type="text" id="city" placeholder="Ex: Paris" required>
+        </div>
+        <div>
+          <label for="postal-code">Code postal :</label>
+          <input type="text" id="postal-code" placeholder="Ex: 75001" required>
+        </div>
       </div>
     </div>
 
@@ -250,7 +266,6 @@
       "Parties communes - Ascenseur",
       "Parties communes - Terrasse / Jardin",
       "Parties communes - Hall d'entrée",
-
       // --- Nettoyage chez particuliers ---
       "--- Nettoyage chez particuliers ---",
       "Chambre à coucher",
@@ -260,7 +275,6 @@
       "Balcon / Terrasse privé",
       "Placard / Vestiaire personnel",
       "Couloir intérieur",
-
       // --- Bureaux, Commerces & Magasins ---
       "--- Bureaux, Commerces & Magasins ---",
       "Bureau individuel",
@@ -270,7 +284,6 @@
       "Entrepôt / Stockage",
       "Toilettes professionnelles",
       "Vitrine extérieure",
-
       // --- Mobilier, Sols, Sanitaires ---
       "--- Mobilier, Sols, Sanitaires ---",
       "Nettoyage mobilier",
@@ -280,7 +293,6 @@
       "Nettoyage plafonds / murs",
       "Aspiration tapis / moquette",
       "Désinfection surfaces",
-
       // --- Vitres intérieures et extérieures ---
       "--- Vitres intérieures et extérieures ---",
       "Vitres intérieures",
@@ -289,7 +301,6 @@
       "Miroirs",
       "Portes vitrées",
       "Nettoyage vitres hautes",
-
       // --- Hôtels & Restaurants ---
       "--- Hôtels & Restaurants ---",
       "Chambres d'hôtel",
@@ -300,7 +311,6 @@
       "Espaces communs hôtel",
       "Bar / Lounge",
       "Terrasse restaurant",
-
       // --- Médecine / Pharmacie ---
       "--- Médecine / Pharmacie ---",
       "Chambres patientes",
@@ -309,7 +319,6 @@
       "Pharmacie",
       "Zones sanitaires hôpital",
       "Sanitaires clinique",
-
       // --- Autres ---
       "--- Autres ---",
       "Autres services sur demande"
@@ -335,35 +344,43 @@
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
-      const address = document.getElementById("address").value;
-      const contract = document.getElementById("contract-type").value;
-      const preferredDay = document.getElementById("preferred-day").value;
-      const preferredTime = document.getElementById("preferred-time").value;
-      const notes = document.getElementById("notes").value;
+      const street = document.getElementById("street").value;
+      const streetNumber = document.getElementById("street-number").value;
+      const city = document.getElementById("city").value;
+      const postalCode = document.getElementById("postal-code").value;
+
+      // تجميع العنوان الكامل
+      const fullAddress = `${street}, ${streetNumber}, ${city}, ${postalCode}`;
 
       let valid = true;
 
-      if (!name || !email || !phone || !address) {
+      if (!name || !email || !phone || !street || !streetNumber || !city || !postalCode) {
         if (!name) document.getElementById("name").classList.add("error");
         if (!email) document.getElementById("email").classList.add("error");
         if (!phone) document.getElementById("phone").classList.add("error");
-        if (!address) document.getElementById("address").classList.add("error");
+        if (!street) document.getElementById("street").classList.add("error");
+        if (!streetNumber) document.getElementById("street-number").classList.add("error");
+        if (!city) document.getElementById("city").classList.add("error");
+        if (!postalCode) document.getElementById("postal-code").classList.add("error");
         valid = false;
       } else {
         document.getElementById("name").classList.remove("error");
         document.getElementById("email").classList.remove("error");
         document.getElementById("phone").classList.remove("error");
-        document.getElementById("address").classList.remove("error");
+        document.getElementById("street").classList.remove("error");
+        document.getElementById("street-number").classList.remove("error");
+        document.getElementById("city").classList.remove("error");
+        document.getElementById("postal-code").classList.remove("error");
       }
 
-      if (!preferredDay) {
+      if (!document.getElementById("preferred-day").value) {
         document.getElementById("days-error").textContent = "Veuillez sélectionner un jour.";
         valid = false;
       } else {
         document.getElementById("days-error").textContent = "";
       }
 
-      if (!preferredTime) {
+      if (!document.getElementById("preferred-time").value) {
         document.getElementById("times-error").textContent = "Veuillez sélectionner une heure.";
         valid = false;
       } else {
@@ -393,20 +410,16 @@
 **Objet : Demande de nettoyage - Référence ${name}**
 Cher(e) [Nom de l'entreprise],
 Voici les détails de la demande de nettoyage :
-
 - **Nom :** ${name}
 - **Email :** ${email}
 - **Téléphone :** ${phone}
-- **Adresse :** ${address}
-
+- **Adresse :** ${fullAddress}
 ### Services demandés :
 ${services.split('\n').filter(line => line.trim()).map(line => line).join('\n')}
-
-- **Type de contrat :** ${contract.charAt(0).toUpperCase() + contract.slice(1)}
-- **Jour préféré :** ${preferredDay}
-- **Heure préférée :** ${preferredTime}
-- **Remarques :** ${notes || "(Aucun commentaire)"}
-
+- **Type de contrat :** ${document.getElementById("contract-type").value.charAt(0).toUpperCase() + document.getElementById("contract-type").value.slice(1)}
+- **Jour préféré :** ${document.getElementById("preferred-day").value}
+- **Heure préférée :** ${document.getElementById("preferred-time").value}
+- **Remarques :** ${document.getElementById("notes").value || "(Aucun commentaire)"}
 Cordialement,  
 ${name}
       `;
