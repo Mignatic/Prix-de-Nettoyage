@@ -168,34 +168,14 @@
       border-bottom: 2px solid #e9ecef;
       padding-bottom: 15px;
     }
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
-    }
-    .pricing-card {
-      background: #f8f9fa;
-      padding: 20px;
-      border-radius: 12px;
-      border-left: 4px solid;
-    }
-    .pricing-card h3 {
-      color: #2c3e50;
-      margin-bottom: 15px;
-      font-size: 1.3rem;
-    }
-    .pricing-card ul {
+    .pricing-section ul {
       list-style-type: none;
     }
-    .pricing-card li {
-      padding: 8px 0;
-      border-bottom: 1px dashed #ddd;
+    .pricing-section li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
       display: flex;
       justify-content: space-between;
-    }
-    .pricing-card li:last-child {
-      border-bottom: none;
     }
     .price {
       font-weight: 600;
@@ -343,39 +323,20 @@
     </div>
   </div>
 
-  <!-- Section Tarifs - Nouveau design -->
+  <!-- Section Tarifs - Services de Base seulement -->
   <div class="pricing-section">
-    <h2>📋 Nos Tarifs</h2>
-    
-    <div class="pricing-grid">
-      <div class="pricing-card" style="border-left-color: #3498db;">
-        <h3>Services de Base</h3>
-        <ul>
-          <li>
-            <span>Nettoyage standard (heure)</span>
-            <span class="price">17.77 €</span>
-          </li>
-          <li>
-            <span>Nettoyage vitres (m²)</span>
-            <span class="price">1.50 €</span>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="pricing-card" style="border-left-color: #27ae60;">
-        <h3>Forfaits</h3>
-        <ul>
-          <li>
-            <span>Forfait mensuel (10h)</span>
-            <span class="price">160.00 €</span>
-          </li>
-          <li>
-            <span>Forfait trimestriel (30h)</span>
-            <span class="price">450.00 €</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <h2>Nos Tarifs</h2>
+    <h3>Services de Base</h3>
+    <ul>
+      <li>
+        <span>Nettoyage standard (heure)</span>
+        <span class="price">17.77 €</span>
+      </li>
+      <li>
+        <span>Nettoyage vitres (m²)</span>
+        <span class="price">1.50 €</span>
+      </li>
+    </ul>
   </div>
 
   <!-- Footer - Nouveau design -->
@@ -418,7 +379,6 @@
 
   <script>
     const spaceTypes = [
-      // --- Parties communes ---
       "--- Parties communes ---",
       "Parties communes - Sol",
       "Parties communes - Murs",
@@ -427,7 +387,6 @@
       "Parties communes - Ascenseur",
       "Parties communes - Terrasse / Jardin",
       "Parties communes - Hall d'entrée",
-      // --- Nettoyage chez particuliers ---
       "--- Nettoyage chez particuliers ---",
       "Chambre à coucher",
       "Salon",
@@ -436,7 +395,6 @@
       "Balcon / Terrasse privé",
       "Placard / Vestiaire personnel",
       "Couloir intérieur",
-      // --- Bureaux, Commerces & Magasins ---
       "--- Bureaux, Commerces & Magasins ---",
       "Bureau individuel",
       "Salle de réunion",
@@ -445,7 +403,6 @@
       "Entrepôt / Stockage",
       "Toilettes professionnelles",
       "Vitrine extérieure",
-      // --- Mobilier, Sols, Sanitaires ---
       "--- Mobilier, Sols, Sanitaires ---",
       "Nettoyage mobilier",
       "Nettoyage sols (carrelage, bois)",
@@ -454,7 +411,6 @@
       "Nettoyage plafonds / murs",
       "Aspiration tapis / moquette",
       "Désinfection surfaces",
-      // --- Vitres intérieures et extérieures ---
       "--- Vitres intérieures et extérieures ---",
       "Vitres intérieures",
       "Vitres extérieures",
@@ -462,7 +418,6 @@
       "Miroirs",
       "Portes vitrées",
       "Nettoyage vitres hautes",
-      // --- Hôtels & Restaurants ---
       "--- Hôtels & Restaurants ---",
       "Chambres d'hôtel",
       "Restaurant - Salle à manger",
@@ -472,7 +427,6 @@
       "Espaces communs hôtel",
       "Bar / Lounge",
       "Terrasse restaurant",
-      // --- Médecine / Pharmacie ---
       "--- Médecine / Pharmacie ---",
       "Chambres patientes",
       "Salle d'attente médecin",
@@ -480,7 +434,6 @@
       "Pharmacie",
       "Zones sanitaires hôpital",
       "Sanitaires clinique",
-      // --- Autres ---
       "--- Autres ---",
       "Autres services sur demande"
     ];
