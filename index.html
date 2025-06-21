@@ -151,6 +151,95 @@
         grid-template-columns: 1fr;
       }
     }
+    /* Nouveaux styles pour la section tarifaire */
+    .pricing-section {
+      margin: 40px auto;
+      max-width: 1000px;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .pricing-section h2 {
+      color: #1a3c34;
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #e9ecef;
+      padding-bottom: 15px;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .pricing-card {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 12px;
+      border-left: 4px solid;
+    }
+    .pricing-card h3 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+    .pricing-card ul {
+      list-style-type: none;
+    }
+    .pricing-card li {
+      padding: 8px 0;
+      border-bottom: 1px dashed #ddd;
+      display: flex;
+      justify-content: space-between;
+    }
+    .pricing-card li:last-child {
+      border-bottom: none;
+    }
+    .price {
+      font-weight: 600;
+      color: #1a3c34;
+    }
+    /* Nouveaux styles pour le footer */
+    footer {
+      margin: 40px auto;
+      max-width: 1000px;
+      background: #1a3c34;
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .footer-section h3 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .footer-section h3 span {
+      font-size: 1.5rem;
+    }
+    .footer-section p {
+      line-height: 1.7;
+      color: #e9ecef;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-bottom p {
+      color: #b0bec5;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -254,13 +343,78 @@
     </div>
   </div>
 
+  <!-- Section Tarifs - Nouveau design -->
   <div class="pricing-section">
-    <h2>📋 Tarifs des Services</h2>
-    <ul>
-      <li>Services de nettoyage (par heure) : 17.77 €</li>
-      <li>Nettoyage des vitres (par m²) : 1.5 €</li>
-    </ul>
+    <h2>📋 Nos Tarifs</h2>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card" style="border-left-color: #3498db;">
+        <h3>Services de Base</h3>
+        <ul>
+          <li>
+            <span>Nettoyage standard (heure)</span>
+            <span class="price">17.77 €</span>
+          </li>
+          <li>
+            <span>Nettoyage vitres (m²)</span>
+            <span class="price">1.50 €</span>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="pricing-card" style="border-left-color: #27ae60;">
+        <h3>Forfaits</h3>
+        <ul>
+          <li>
+            <span>Forfait mensuel (10h)</span>
+            <span class="price">160.00 €</span>
+          </li>
+          <li>
+            <span>Forfait trimestriel (30h)</span>
+            <span class="price">450.00 €</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
+
+  <!-- Footer - Nouveau design -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>
+          <span>🔒</span> Confidentialité
+        </h3>
+        <p>
+          Toutes vos informations sont protégées et ne seront jamais partagées avec des tiers.
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>
+          <span>🛡️</span> Assurance
+        </h3>
+        <p>
+          Notre entreprise est entièrement assurée pour votre tranquillité d'esprit.
+        </p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>
+          <span>💡</span> Transparence
+        </h3>
+        <p>
+          Les prix affichés sont indicatifs et peuvent être ajustés après évaluation sur place.
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>
+        © 2025 Entreprise de Nettoyage. Tous droits réservés.
+      </p>
+    </div>
+  </footer>
 
   <script>
     const spaceTypes = [
@@ -442,10 +596,4 @@ ${name}
     window.onload = () => addSpaceField();
   </script>
 </body>
-<footer style="margin-top: 40px; font-size: 0.95rem; color: #555; text-align: center;">
-  <p>🔒 Ce simulateur utilise une connexion <strong>. Toutes vos informations sont <strong>confidentielles</strong>.</p>
-  <p>🛡️ Notre entreprise est couverte par une assurance complète.</p>
-  <p>💡 Le prix affiché est indicatif et peut varier après évaluation.</p>
-  <p>✅ Vos données ne sont utilisées que pour traiter votre demande.</p>
-</footer>
 </html>
