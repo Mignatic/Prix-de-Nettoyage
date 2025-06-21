@@ -141,6 +141,16 @@
       font-size: 0.9rem;
       margin-top: 5px;
     }
+    .address-group {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 15px;
+    }
+    @media (max-width: 768px) {
+      .address-group {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
@@ -163,9 +173,19 @@
         <label for="phone">Téléphone :</label>
         <input type="tel" id="phone" placeholder="Numéro de téléphone" required>
       </div>
+    </div>
+
+    <!-- Nouveaux champs d'adresse divisés -->
+    <label>Adresse complète :</label>
+    <div class="address-group">
       <div>
-        <label for="address">Adresse complète :</label>
-        <input type="text" id="address" placeholder="Adresse, Ville, Code Postal" required>
+        <input type="text" id="street" placeholder="Nom de la rue et numéro" required>
+      </div>
+      <div>
+        <input type="text" id="city" placeholder="Ville" required>
+      </div>
+      <div>
+        <input type="text" id="postal-code" placeholder="Code postal" required>
       </div>
     </div>
 
@@ -200,7 +220,7 @@
           <option value="Dimanche">Dimanche</option>
           <option value="Matins uniquement">Matins uniquement</option>
           <option value="Week-end uniquement">Week-end uniquement</option>
-          <option value="autre">Autre</option> <!-- ✅ تم الإضافة هنا -->
+          <option value="autre">Autre</option>
         </select>
         <div class="error-message" id="days-error"></div>
       </div>
@@ -215,7 +235,7 @@
           <option value="11:00-12:00">16:00 - 18:00</option>
           <option value="11:00-12:00">18:00 - 20:00</option>
           <option value="Flexible">Heures flexibles</option>
-          <option value="autre">Autre</option> <!-- ✅ تم الإضافة هنا -->
+          <option value="autre">Autre</option>
         </select>
         <div class="error-message" id="times-error"></div>
       </div>
@@ -331,7 +351,9 @@
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const phone = document.getElementById("phone").value;
-      const address = document.getElementById("address").value;
+      const street = document.getElementById("street").value;
+      const city = document.getElementById("city").value;
+      const postalCode = document.getElementById("postal-code").value;
       const contract = document.getElementById("contract-type").value;
       const preferredDay = document.getElementById("preferred-day").value;
       const preferredTime = document.getElementById("preferred-time").value;
@@ -339,17 +361,22 @@
 
       let valid = true;
 
-      if (!name || !email || !phone || !address) {
+      // Validation des champs obligatoires
+      if (!name || !email || !phone || !street || !city || !postalCode) {
         if (!name) document.getElementById("name").classList.add("error");
         if (!email) document.getElementById("email").classList.add("error");
         if (!phone) document.getElementById("phone").classList.add("error");
-        if (!address) document.getElementById("address").classList.add("error");
+        if (!street) document.getElementById("street").classList.add("error");
+        if (!city) document.getElementById("city").classList.add("error");
+        if (!postalCode) document.getElementById("postal-code").classList.add("error");
         valid = false;
       } else {
         document.getElementById("name").classList.remove("error");
         document.getElementById("email").classList.remove("error");
         document.getElementById("phone").classList.remove("error");
-        document.getElementById("address").classList.remove("error");
+        document.getElementById("street").classList.remove("error");
+        document.getElementById("city").classList.remove("error");
+        document.getElementById("postal-code").classList.remove("error");
       }
 
       if (!preferredDay) {
@@ -385,13 +412,15 @@
         return;
       }
 
+      const fullAddress = `${street}, ${postalCode} ${city}`;
+
       const emailBody = `
 **Objet : Demande de nettoyage - Référence ${name}**
 Voici les détails de la demande de nettoyage :
 - **Nom :** ${name}
 - **Email :** ${email}
 - **Téléphone :** ${phone}
-- **Adresse :** ${address}
+- **Adresse :** ${fullAddress}
 
 ### Services demandés :
 ${services.split('\n').filter(line => line.trim()).map(line => line).join('\n')}
